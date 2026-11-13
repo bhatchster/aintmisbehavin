@@ -1,10 +1,249 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Aint Misbehavin'</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aint Misbehavin' — Guitar &amp; Vocals, San Diego</title>
+  <meta name="description" content="Aint Misbehavin' — a guitar and vocal duo from San Diego. Hear demo tracks and book a show.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #fbfaf7;
+      --ink: #141414;
+      --ink-soft: #4a4a4a;
+      --rule: #d9d6cf;
+      --display: "IM Fell English", Georgia, serif;
+      --body: "Libre Franklin", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.65;
+    }
 
-<body><br>Aint
+    /* ---------- Nav ---------- */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(251, 250, 247, 0.94);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav ul {
+      list-style: none; margin: 0 auto; padding: 0.8rem 1.25rem;
+      display: flex; justify-content: center; gap: 2.25rem;
+    }
+    nav a {
+      color: var(--ink); text-decoration: none;
+      font-family: var(--display); font-size: 1.15rem;
+    }
+    nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      background: #fff;
+      border-bottom: 1px solid var(--rule);
+      text-align: center;
+    }
+    .hero img {
+      display: block;
+      width: 100%;
+      max-width: 1100px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: 5rem 1.25rem; }
+    section + section { border-top: 1px solid var(--rule); }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin: 0 0 1.5rem;
+      text-align: center;
+    }
+    .kicker {
+      display: block; text-align: center;
+      font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-soft); margin-bottom: 0.5rem;
+    }
+    p { margin: 0 0 1.1rem; }
+    .about p:first-of-type::first-letter {
+      font-family: var(--display);
+      float: left; font-size: 3.6rem; line-height: 0.9;
+      padding: 0.35rem 0.5rem 0 0;
+    }
+
+    /* ---------- Tracks ---------- */
+    .tracks { list-style: none; margin: 0; padding: 0; }
+    .track {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.25rem 1rem;
+      align-items: center;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .track:first-child { border-top: 1px solid var(--rule); }
+    .track-num {
+      font-family: var(--display); font-size: 2rem; line-height: 1;
+      grid-row: span 2; align-self: start;
+    }
+    .track-title { font-family: var(--display); font-size: 1.45rem; line-height: 1.2; }
+    .track-meta { color: var(--ink-soft); font-size: 0.9rem; font-weight: 400; margin-left: 0.4rem; font-family: var(--body); }
+    .track audio { width: 100%; height: 40px; margin-top: 0.4rem; }
+    .note { text-align: center; color: var(--ink-soft); font-size: 0.92rem; margin-top: 1.5rem; }
+
+    /* ---------- Contact ---------- */
+    form { display: grid; gap: 1.1rem; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.3rem; }
+    input, textarea, select {
+      width: 100%;
+      font: inherit; font-size: 1rem;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid #bdb9b0;
+      border-radius: 3px;
+      padding: 0.7rem 0.8rem;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: 2px solid var(--ink); outline-offset: 1px; border-color: var(--ink);
+    }
+    textarea { min-height: 150px; resize: vertical; }
+    button {
+      justify-self: center;
+      font-family: var(--display); font-size: 1.3rem;
+      background: var(--ink); color: var(--paper);
+      border: 2px solid var(--ink); border-radius: 3px;
+      padding: 0.6rem 2.4rem; cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    button:hover { background: var(--paper); color: var(--ink); }
+    .hp { position: absolute; left: -9999px; }
+
+    footer {
+      text-align: center; padding: 2.5rem 1rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.85rem; color: var(--ink-soft);
+    }
+
+    @media (max-width: 600px) {
+      nav ul { gap: 1.25rem; }
+      section { padding: 3.5rem 1.1rem; }
+      .row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#demos">Demos</a></li>
+      <li><a href="#booking">Booking</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <img src="aintmisbehavinlogo.jpg" alt="Aint Misbehavin' — hand-drawn horned figure with the band name">
+  </header>
+
+  <main>
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="about">
+      <div class="wrap">
+        <span class="kicker">Guitar &amp; Vocals · San Diego</span>
+        <h2>About</h2>
+        <p>Aint Misbehavin' is Blair Hatch on vocals (Barefoot Hockey Goalie) and Sean Mcallinn on guitar (Dieselhed). With an eclectic mix of jazz standards, traditionals and oddities, we are currently looking for venues suitable for our two piece low volume set.</p>
+      </div>
+    </section>
+
+    <!-- ===== DEMO TRACKS ===== -->
+    <!-- To add songs: put mp3 files in a "tracks" folder next to this page,
+         then update each title and src below. -->
+    <section id="demos">
+      <div class="wrap">
+        <span class="kicker">Have a listen</span>
+        <h2>Demo Tracks</h2>
+        <ol class="tracks">
+          <li class="track">
+            <span class="track-num">1</span>
+            <div class="track-title">Ain't Misbehavin'</div>
+            <audio controls preload="none" src="tracks/aintmisbehavin.mp3">Your browser can't play this audio.</audio>
+          </li>
+          <li class="track">
+            <span class="track-num">2</span>
+            <div class="track-title">King of the Road</div>
+            <audio controls preload="none" src="tracks/kingoftheroad.mp3">Your browser can't play this audio.</audio>
+          </li>
+          <li class="track">
+            <span class="track-num">3</span>
+            <div class="track-title">Summer Wind</div>
+            <audio controls preload="none" src="tracks/summerwind.m4a">Your browser can't play this audio.</audio>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== BOOKING / CONTACT ===== -->
+    <!-- Form is handled by FormSubmit (formsubmit.co) and emails bhatchster@gmail.com.
+         The very first submission sends a one-time activation email — click the link in it. -->
+    <section id="booking">
+      <div class="wrap">
+        <span class="kicker">Get in touch</span>
+        <h2>Booking</h2>
+        <p style="text-align:center">Tell us about your venue or event and we'll get back to you.</p>
+        <form action="https://formsubmit.co/bhatchster@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New booking inquiry — Aint Misbehavin' website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off">
+
+          <div class="row">
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required autocomplete="name">
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" required autocomplete="email">
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="venue">Venue / Event</label>
+              <input id="venue" name="venue" type="text">
+            </div>
+            <div>
+              <label for="date">Date (if known)</label>
+              <input id="date" name="date" type="date">
+            </div>
+          </div>
+          <div>
+            <label for="message">Details</label>
+            <textarea id="message" name="message" required placeholder="Location, set length, budget, anything else we should know"></textarea>
+          </div>
+          <button type="submit">Send Inquiry</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="yr">2026</span> Aint Misbehavin' · San Diego, CA
+  </footer>
+
+  <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
 </body>
 </html>
